@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.puc.boaentrega.models.Cliente;
 import br.com.puc.boaentrega.services.ClienteManager;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("cliente")
@@ -24,6 +25,7 @@ public class ClienteController {
 	@Autowired
 	private ClienteManager clienteManager;
 	
+	@Operation(summary = "Cadastramento de Clientes")
 	@PostMapping("/")
 	public ResponseEntity<Cliente> casdastrarCliente(@RequestBody Cliente cliente) throws URISyntaxException {
 	    
@@ -41,6 +43,7 @@ public class ClienteController {
 	    }
 	}
 	
+	@Operation(summary = "Alteração de Clientes")
 	@PutMapping("/{cpf}")
 	public ResponseEntity<Cliente> alterarCliente(@RequestBody Cliente cliente, @PathVariable String cpf) {
 	    
@@ -53,6 +56,7 @@ public class ClienteController {
 	    }
 	}
 	
+	@Operation(summary = "Consulta de Clientes")
 	@GetMapping("/{cpf}")
 	public ResponseEntity<Cliente> buscarCliente(@PathVariable("cpf") String cpf) {
 	    

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.puc.boaentrega.models.Rating;
 import br.com.puc.boaentrega.services.RatingManager;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("rating")
@@ -23,6 +24,7 @@ public class RatingController {
 	@Autowired
 	private RatingManager ratingManager;
 	
+	@Operation(summary = "Cadastramento de Rating")
 	@PostMapping("/")
 	public ResponseEntity<Rating> casdastrarRating(@RequestBody Rating rating) throws URISyntaxException {
 	    
@@ -40,6 +42,7 @@ public class RatingController {
 	    }
 	}
 	
+	@Operation(summary = "Consulta Quantidade de Ratings Altos")
 	@GetMapping("/high")
 	public ResponseEntity<Long> buscarQtdHighRating() {
 	    
@@ -52,6 +55,7 @@ public class RatingController {
 	    }
 	}
 	
+	@Operation(summary = "Consulta Quantidade de Ratings Baixos")
 	@GetMapping("/low")
 	public ResponseEntity<Long> buscarQtdLowRating() {
 	    
@@ -64,6 +68,7 @@ public class RatingController {
 	    }
 	}
 	
+	@Operation(summary = "Consulta Todos os Ratings")
 	@GetMapping("/")
 	public ResponseEntity<List<Rating>> buscarAllRating() {
 	    

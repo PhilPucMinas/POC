@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.puc.boaentrega.models.Mercadoria;
 import br.com.puc.boaentrega.services.MercadoriaManager;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("mercadoria")
@@ -25,6 +26,7 @@ public class MercadoriaController {
 	@Autowired
 	private MercadoriaManager mercadoriaManager;
 	
+	@Operation(summary = "Cadastramento de Mercadorias")
 	@PostMapping("/")
 	public ResponseEntity<Mercadoria> casdastrarMercadoria(@RequestBody Mercadoria mercadoria) throws URISyntaxException {
 	    
@@ -42,6 +44,7 @@ public class MercadoriaController {
 	    }
 	}
 	
+	@Operation(summary = "Alteração de Mercadorias")
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Mercadoria> alterarMercadoria(@RequestBody Mercadoria mercadoria, @PathVariable Long codigo) {
 	    
@@ -54,6 +57,7 @@ public class MercadoriaController {
 	    }
 	}
 	
+	@Operation(summary = "Consulta de Mercadorias")
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Mercadoria> buscarMercadoria(@PathVariable("codigo") Long codigo) {
 	    
@@ -66,6 +70,7 @@ public class MercadoriaController {
 	    }
 	}
 	
+	@Operation(summary = "Exclusão de Mercadorias")
 	@DeleteMapping("/{codigo}")
 	public ResponseEntity<Mercadoria> excluirMercadoria(@PathVariable Long codigo) {
 	    mercadoriaManager.excluirMercadoria(codigo);
