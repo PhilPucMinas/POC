@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.puc.boaentrega</groupId>
 	<artifactId>BoaEntrega-PUC</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<name>BoaEntrega-PUC</name>
 	<description>Boa Entrega Web Services</description>
 	<properties>
