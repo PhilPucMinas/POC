@@ -3,6 +3,7 @@ package br.com.puc.boaentrega.controllers;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,9 +45,9 @@ public class RatingController {
 	
 	@Operation(summary = "Consulta Quantidade de Ratings Altos")
 	@GetMapping("/high")
-	public ResponseEntity<Long> buscarQtdHighRating() {
+	public ResponseEntity<Map<String, Long>> buscarQtdHighRating() {
 	    
-		Long highRatingEncontrado = ratingManager.buscarQtdHighRating();
+		Map<String, Long> highRatingEncontrado = ratingManager.buscarQtdHighRating();
 	    
 		if (null == highRatingEncontrado) {
 	        return ResponseEntity.notFound().build();
@@ -57,9 +58,9 @@ public class RatingController {
 	
 	@Operation(summary = "Consulta Quantidade de Ratings Baixos")
 	@GetMapping("/low")
-	public ResponseEntity<Long> buscarQtdLowRating() {
+	public ResponseEntity<Map<String, Long>> buscarQtdLowRating() {
 	    
-		Long lowRatingEncontrado = ratingManager.buscarQtdLowRating();
+		Map<String, Long> lowRatingEncontrado = ratingManager.buscarQtdLowRating();
 	    
 		if (null == lowRatingEncontrado) {
 	        return ResponseEntity.notFound().build();

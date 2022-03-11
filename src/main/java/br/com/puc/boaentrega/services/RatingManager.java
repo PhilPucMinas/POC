@@ -1,6 +1,8 @@
 package br.com.puc.boaentrega.services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +20,24 @@ public class RatingManager {
 		return ratingRepository.insert(rating);
 	}
 
-	public Long buscarQtdHighRating() {
-		return ratingRepository.buscarQtdHighRating();
+	public Map<String, Long> buscarQtdHighRating() {
+		
+		Map<String, Long> qtdRating = new HashMap<>();
+		
+		Long qtdHighRating = ratingRepository.buscarQtdHighRating();
+		qtdRating.put("qtdHighRating", qtdHighRating);
+		
+		return qtdRating;
 	}
 
-	public Long buscarQtdLowRating() {
-		return ratingRepository.buscarQtdLowRating();
+	public Map<String, Long> buscarQtdLowRating() {
+		
+		Map<String, Long> qtdRating = new HashMap<>();
+		
+		Long qtdLowRating = ratingRepository.buscarQtdLowRating();
+		qtdRating.put("qtdLowRating", qtdLowRating);
+		
+		return qtdRating;
 	}
 	
 	public List<Rating> buscarAllRating() {
