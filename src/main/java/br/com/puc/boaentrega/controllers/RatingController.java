@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.google.common.flogger.FluentLogger;
+
 import br.com.puc.boaentrega.models.Rating;
 import br.com.puc.boaentrega.services.RatingManager;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,6 +24,8 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("rating")
 public class RatingController {
 
+	private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+	
 	@Autowired
 	private RatingManager ratingManager;
 	
@@ -29,6 +33,8 @@ public class RatingController {
 	@PostMapping("/")
 	public ResponseEntity<Rating> casdastrarRating(@RequestBody Rating rating) throws URISyntaxException {
 	    
+		logger.atInfo().log("Chamando cadastramento de Rating");
+		
 		Rating ratingCadastrado = ratingManager.casdastrarRating(rating);
 	    
 		if (null == ratingCadastrado) {
@@ -46,6 +52,8 @@ public class RatingController {
 	@Operation(summary = "Consulta Quantidade de Ratings Altos")
 	@GetMapping("/high")
 	public ResponseEntity<Map<String, Long>> buscarQtdHighRating() {
+		
+		logger.atInfo().log("Chamando busca de quantidade de Rating Alto");
 	    
 		Map<String, Long> highRatingEncontrado = ratingManager.buscarQtdHighRating();
 	    
@@ -59,6 +67,8 @@ public class RatingController {
 	@Operation(summary = "Consulta Quantidade de Ratings Baixos")
 	@GetMapping("/low")
 	public ResponseEntity<Map<String, Long>> buscarQtdLowRating() {
+		
+		logger.atInfo().log("Chamando busca de quantidade de Rating Baixo");
 	    
 		Map<String, Long> lowRatingEncontrado = ratingManager.buscarQtdLowRating();
 	    
@@ -72,6 +82,8 @@ public class RatingController {
 	@Operation(summary = "Consulta Todos os Ratings")
 	@GetMapping("/")
 	public ResponseEntity<List<Rating>> buscarAllRating() {
+		
+		logger.atInfo().log("Chamando consulta de todos os Ratings");
 	    
 		List<Rating> allRatingEncontrado = ratingManager.buscarAllRating();
 	    
